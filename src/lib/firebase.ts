@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps, getApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
@@ -11,23 +11,30 @@ const firebaseConfig = {
   appId:             import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-// Diagnostic check
+// Diagnostic check (logs only, no throwing)
 const missingKeys = Object.entries(firebaseConfig)
   .filter(([key, value]) => !value && !["messagingSenderId", "appId"].includes(key))
   .map(([key]) => key);
 
 if (missingKeys.length > 0) {
-  console.error("Missing Firebase Environment Variables:", missingKeys);
+  console.warn("⚠️ Firebase Environment Variables are missing:", missingKeys);
 }
 
-let db: any;
+let db: any = null;
+
 try {
-  const app = initializeApp(firebaseConfig);
-  db = getDatabase(app);
+  // Check if every required key exists before initializing
+  const hasRequiredKeys = firebaseConfig.apiKey && firebaseConfig.projectId && firebaseConfig.databaseURL;
+  
+  if (hasRequiredKeys) {
+    const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
+    db = getDatabase(app);
+    console.log("✅ Firebase initialized successfully");
+  } else {
+    console.error("❌ Firebase could not be initialized: Required keys are missing.");
+  }
 } catch (error) {
-  console.error("Firebase initialization failed:", error);
-  // Re-throw to be caught by ErrorBoundary
-  throw new Error("Could not initialize Firebase. Check your configuration.");
+  console.error("❌ Firebase initialization failed unexpectedly:", error);
 }
 
 export { db };

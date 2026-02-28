@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ChevronRight, CheckCircle, AlertCircle, Trash2, Plus, Loader2 } from "lucide-react";
 import { cn } from "../../lib/utils";
+import { db } from "./firebase";
 import {
   isTeamNameTaken,
   findDuplicateEmails,
@@ -10,6 +11,11 @@ import {
   type TrackId,
   type Member as FirestoreMember,
 } from "../../lib/registrations";
+
+// ── Diagnostics ─────────────────────────────────────────────────────────────
+if (!db) {
+  console.error("Firebase Database is not available. This usually means environment variables are missing.");
+}
 
 type Track = TrackId;
 
