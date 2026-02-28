@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { ChevronRight, CheckCircle, AlertCircle, Trash2, Plus, Loader2 } from "lucide-react";
 import { cn } from "../../lib/utils";
-import { db } from "./firebase";
+import { db } from "../../lib/firebase";
 import {
   isTeamNameTaken,
   findDuplicateEmails,
