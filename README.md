@@ -3,7 +3,7 @@
 [![IEEE](https://img.shields.io/badge/IEEE-Student_Branch-00629B?style=for-the-badge&logo=ieee&logoColor=white)](https://www.ieee.org/)
 [![Pharos University](https://img.shields.io/badge/Pharos_University-PUA-FFD700?style=for-the-badge)](https://www.pua.edu.eg/)
 
-A premium, high-performance competition registration portal built for the **IEEE Student Branch** at **Pharos University in Alexandria (PUA)**. Inspired by the minimalist aesthetic of `popcorn.space`.
+A premium, high-performance competition registration portal built for the **IEEE Student Branch** at **Pharos University in Alexandria (PUA)**.
 
 ## ✨ Features
 
