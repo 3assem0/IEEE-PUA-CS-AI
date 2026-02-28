@@ -1,0 +1,51 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap');
+
+@theme {
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+
+  /* Light airy palette — Popcorn.space inspired */
+  --color-bg:        #F7F7F7;
+  --color-bg-card:   #FFFFFF;
+  --color-border:    rgba(0,0,0,0.07);
+  --color-text:      #393737;
+  --color-muted:     #888787;
+  --color-subtle:    #BCBCBC;
+
+  /* Brand accent — used sparingly */
+  --color-brand:     #393737;
+  --color-brand-inv: #FFFFFF;
+
+  /* Semantic */
+  --color-success:   #16A34A;
+  --color-error:     #DC2626;
+  --color-pending:   #D97706;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Mesh glow blobs — reusable background decorations ── */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+}
+.blob-blue   { background: radial-gradient(circle, rgba(147,210,255,0.45) 0%, transparent 70%); }
+.blob-green  { background: radial-gradient(circle, rgba(134,239,172,0.35) 0%, transparent 70%); }
+.blob-pink   { background: radial-gradient(circle, rgba(249,168,212,0.30) 0%, transparent 70%); }
+.blob-gold   { background: radial-gradient(circle, rgba(253,224,71,0.25) 0%, transparent 70%); }
+
+/* ── Typography helpers ── */
+.serif { font-family: var(--font-serif); }
